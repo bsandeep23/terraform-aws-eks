@@ -38,7 +38,7 @@ resource "aws_security_group" "cluster" {
   tags = merge(
     var.tags,
     {
-      "Name" = "${var.cluster_name}-eks_cluster_sg"
+      "Name" = format("%s-%s-%s-%s-cluster-sg", var.component, var.stack, var.stage, var.region)
     },
   )
 }

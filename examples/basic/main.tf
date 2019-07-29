@@ -28,6 +28,12 @@ data "aws_availability_zones" "available" {
 
 locals {
   cluster_name = "test-eks-${random_string.suffix.result}"
+  common_tags = {
+		Owner                                           = var.owner
+		Component                                       = var.component
+		Stack                                           = var.stack
+		Stage                                           = var.stage
+	}
 }
 
 resource "random_string" "suffix" {
@@ -113,12 +119,13 @@ module "eks" {
   cluster_name = local.cluster_name
   subnets      = module.vpc.private_subnets
 
-  tags = {
-    Environment = "test"
-    GithubRepo  = "terraform-aws-eks"
-    GithubOrg   = "terraform-aws-modules"
-  }
-
+  tags = local.common_tags
+  region    = var.region
+  component = var.component
+  stack     = var.stack
+  stage     = var.stage
+  
+  
   vpc_id = module.vpc.vpc_id
 
   worker_groups = [

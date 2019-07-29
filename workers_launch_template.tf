@@ -81,11 +81,7 @@ resource "aws_autoscaling_group" "workers_launch_template" {
     [
       {
         "key" = "Name"
-        "value" = "${aws_eks_cluster.this.name}-${lookup(
-          var.worker_groups_launch_template[count.index],
-          "name",
-          count.index,
-        )}-eks_asg"
+        "value" = format("%s-%s-%s-%s-%s-asg-launch-template", var.component, var.stack, var.stage, var.region, var.worker_groups_launch_template[count.index].name)
         "propagate_at_launch" = true
       },
       {

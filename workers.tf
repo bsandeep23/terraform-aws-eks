@@ -69,7 +69,7 @@ resource "aws_autoscaling_group" "workers" {
     [
       {
         "key"                 = "Name"
-        "value"               = "${aws_eks_cluster.this.name}-${lookup(var.worker_groups[count.index], "name", count.index)}-eks_asg"
+        "value"               = format("%s-%s-%s-%s-%s-asg", var.component, var.stack, var.stage, var.region, var.worker_groups[count.index].name)
         "propagate_at_launch" = true
       },
       {
@@ -213,7 +213,7 @@ resource "aws_security_group" "workers" {
   tags = merge(
     var.tags,
     {
-      "Name"                                               = "${aws_eks_cluster.this.name}-eks_worker_sg"
+      "Name"                                               = format("%s-%s-%s-%s-worker-sg", var.component, var.stack, var.stage, var.region) 
       "kubernetes.io/cluster/${aws_eks_cluster.this.name}" = "owned"
     },
   )

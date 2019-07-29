@@ -1,3 +1,23 @@
+variable "component" {
+  description = "Component for which the eks is being created. for eg: devops"
+  type = string
+}
+
+variable "stack" {
+   description = "Stack . for eg: network"
+   type = string
+}
+
+variable "stage" {
+   description = "Stage for eg: dev, stg"
+   type = string
+}
+
+variable "region" {
+   description = "region in which it is being deployed"
+   type = string
+}  
+
 variable "cluster_enabled_log_types" {
   default     = []
   description = "A list of the desired control plane logging to enable. For more information, see Amazon EKS Control Plane Logging documentation (https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)"

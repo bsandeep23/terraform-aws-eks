@@ -1,3 +1,23 @@
+variable "owner" {
+  description = "Owner of the infra"
+  default     = "vd.devops"
+}
+
+variable "component" {
+  description = "Component name"
+  default     = "devops"
+}
+
+variable "stack" {
+  description = "Sub Component name"
+  default     = "eks"
+}
+
+variable "stage" {
+  description = "stage "
+  default     = "dev"
+}
+
 variable "region" {
   default = "us-west-2"
 }
