@@ -1,22 +1,22 @@
 variable "component" {
   description = "Component for which the eks is being created. for eg: devops"
-  type = string
+  type        = string
 }
 
 variable "stack" {
-   description = "Stack . for eg: network"
-   type = string
+  description = "Stack . for eg: network"
+  type        = string
 }
 
 variable "stage" {
-   description = "Stage for eg: dev, stg"
-   type = string
+  description = "Stage for eg: dev, stg"
+  type        = string
 }
 
 variable "region" {
-   description = "region in which it is being deployed"
-   type = string
-}  
+  description = "region in which it is being deployed"
+  type        = string
+}
 
 variable "cluster_enabled_log_types" {
   default     = []
@@ -43,6 +43,12 @@ variable "cluster_security_group_id" {
   description = "If provided, the EKS cluster will be attached to this security group. If not given, a security group will be created with necessary ingres/egress to work with the workers and provide API access to your current IP/32."
   type        = string
   default     = ""
+}
+
+variable "cluster_additional_security_group_ids" {
+  description = "lsit of additional security groups to be attached to the cluster"
+  type        = list
+  default     = []
 }
 
 variable "cluster_version" {

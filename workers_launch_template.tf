@@ -80,8 +80,8 @@ resource "aws_autoscaling_group" "workers_launch_template" {
   tags = concat(
     [
       {
-        "key" = "Name"
-        "value" = format("%s-%s-%s-%s-%s-asg-launch-template", var.component, var.stack, var.stage, var.region, var.worker_groups_launch_template[count.index].name)
+        "key"                 = "Name"
+        "value"               = format("%s-%s-%s-%s-%s-asg-launch-template", var.component, var.stack, var.stage, var.region, var.worker_groups_launch_template[count.index].name)
         "propagate_at_launch" = true
       },
       {

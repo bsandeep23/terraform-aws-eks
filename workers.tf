@@ -213,7 +213,7 @@ resource "aws_security_group" "workers" {
   tags = merge(
     var.tags,
     {
-      "Name"                                               = format("%s-%s-%s-%s-worker-sg", var.component, var.stack, var.stage, var.region) 
+      "Name"                                               = format("%s-%s-%s-%s-worker-sg", var.component, var.stack, var.stage, var.region)
       "kubernetes.io/cluster/${aws_eks_cluster.this.name}" = "owned"
     },
   )
