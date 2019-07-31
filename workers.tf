@@ -329,6 +329,7 @@ resource "null_resource" "tags_as_list_of_maps" {
   }
 }
 
+/*
 resource "aws_iam_role_policy_attachment" "workers_autoscaling" {
   count      = var.manage_worker_iam_resources ? 1 : 0
   policy_arn = aws_iam_policy.worker_autoscaling[0].arn
@@ -342,6 +343,7 @@ resource "aws_iam_policy" "worker_autoscaling" {
   policy      = data.aws_iam_policy_document.worker_autoscaling.json
   path        = var.iam_path
 }
+*/
 
 data "aws_iam_policy_document" "worker_autoscaling" {
   statement {
